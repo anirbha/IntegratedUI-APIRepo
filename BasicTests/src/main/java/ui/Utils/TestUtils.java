@@ -57,6 +57,12 @@ public class TestUtils {
         String relativePath = getProperty("ScreenshotRelativePath") + Screenshotfilename + ".png";
         String destination = System.getProperty("user.dir") + "/" + relativePath;
 
+        File folder=new File(destination);
+        if(!folder.exists())
+        {
+            folder.mkdirs();
+        }
+
         try {
             Files.copy(screenshotfile.toPath(), new File(destination).toPath());
         } catch (IOException e) {
