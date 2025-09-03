@@ -17,6 +17,7 @@ public class LoginActions {
 
     }
 
+
     public void launchurl() {
         url = TestUtils.getProperty("URL");
         TestUtils.launchUrl(driver, url);
