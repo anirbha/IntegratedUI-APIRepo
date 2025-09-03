@@ -8,12 +8,6 @@ import ui.Utils.ExtentManager;
 
 public class ExtentTestListener implements ITestListener {
 
-//    @Override
-//    public void onTestStart(ITestResult result) {
-//
-//
-//    }
-
     @Override
     public void onTestSuccess(ITestResult result) {
         String testName = result.getMethod().getMethodName();

@@ -8,7 +8,9 @@ import org.testng.annotations.Listeners;
         features = {"src/test/java/resources/features/ui/LaunchUrl.feature"},
         glue = {"ui/stepdefinitions","hooks"},
         tags = "@LaunchUrl",
-        plugin = {"pretty", "html:target/cucumber-report.html"}
+        plugin = {"pretty",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+
 )
 @Listeners(ExtentTestListener.class)
 public class UITestRunner extends AbstractTestNGCucumberTests{

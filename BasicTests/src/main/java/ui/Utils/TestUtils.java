@@ -69,7 +69,7 @@ public class TestUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return destination;
+        return relativePath;
     }
 
     public static void launchUrl(WebDriver driver, String url)
