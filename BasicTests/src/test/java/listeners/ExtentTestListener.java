@@ -10,8 +10,7 @@ public class ExtentTestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        String testName = result.getMethod().getMethodName();
-        ExtentManager.getExtentTest().pass("Test '" + testName + "' passed.");
+        ExtentManager.getExtentTest().pass("Test passed");
     }
 
     @Override
