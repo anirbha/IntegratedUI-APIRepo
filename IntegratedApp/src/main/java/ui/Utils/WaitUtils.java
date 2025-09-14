@@ -32,4 +32,10 @@ public class WaitUtils {
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(object)));
 
     }
+    public static void waitForStaleNess(WebDriver driver, By object)  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.stalenessOf(driver.findElement(object)));
+
+    }
 }

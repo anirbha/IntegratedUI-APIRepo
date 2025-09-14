@@ -1,12 +1,11 @@
 package ui.stepdefinitions;
 
 
-import io.cucumber.java.PendingException;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import ui.Actions.LoginActions;
 import ui.Base.DriverManager;
