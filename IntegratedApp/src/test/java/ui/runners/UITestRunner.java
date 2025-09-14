@@ -5,9 +5,9 @@ import listeners.ExtentTestListener;
 import org.testng.annotations.Listeners;
 
 @CucumberOptions(
-        features = {"src/test/java/resources/features/ui/Login.feature"},
+        features = {"src/test/java/resources/features/ui"},
         glue = {"ui/stepdefinitions","hooks"},
-        tags = "@RegistrationWithInvalidNumbers",
+        tags = "@Regression",
         plugin = {"pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 
