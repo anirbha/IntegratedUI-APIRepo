@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class TestUtils {
@@ -149,7 +151,28 @@ public class TestUtils {
          Assert.assertEquals(actual, expected ,message);
 
     }
+    // Utility method to check if all elements in a list are equal
+    public static <T> boolean allElementsEqual(List<T> list) {
+        if (list == null || list.isEmpty()) return true;
+        T first = list.get(0);
+        for (T item : list) {
+            if (!first.equals(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    public static int CurrentPageNo(String pageTxt)
+    {
+        Pattern pattern = Pattern.compile("Page\\s+(\\d+)\\s+of");
+        Matcher matcher = pattern.matcher(pageTxt);
+        int currentPage = 0;
+        if (matcher.find()) {
+            currentPage = Integer.parseInt(matcher.group(1));
+        }
+        return currentPage;
+    }
 }
 
 

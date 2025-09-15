@@ -52,6 +52,7 @@ public class DynamicSelectionSteps {
 
     @And("I enter a product name {string} in the searchbox and hit enter")
     public void iEnterAProductNameInTheSearchboxAndHitEnter(String product) {
+
         dynamicSelectionAction.enterProductNameInSearchBox(product);
     }
 

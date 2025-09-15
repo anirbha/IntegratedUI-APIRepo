@@ -205,6 +205,7 @@ public class DynamicSelectionAction {
 
     public void enterProductNameInSearchBox(String product) {
         this.product=product;
+        WaitUtils.waitExplicitlyForElemTobeClickable(driver,dynamicSelectionPage.searchBox);
         driver.findElement(dynamicSelectionPage.searchBox).clear();
         driver.findElement(dynamicSelectionPage.searchBox).sendKeys(product);
         TestUtils.pressEnterKey(driver, dynamicSelectionPage.searchBox);
@@ -303,7 +304,7 @@ public class DynamicSelectionAction {
 
     public void valNavToPaymentPage() {
         try{
-            assertTrue(driver.getTitle().contains("Secure Payment"),"Navigated to payment page");
+            assertTrue(Objects.requireNonNull(driver.getTitle()).contains("Secure Payment"),"Navigated to payment page");
             Log.info("Navigated to payment page");
             ExtentManager.getExtentTest().pass("Navigated to payment page ", MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
         } catch (Exception e) {
@@ -311,4 +312,6 @@ public class DynamicSelectionAction {
             ExtentManager.getExtentTest().fail("Not navigated to payment page ", MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
         }
     }
+
+
 }

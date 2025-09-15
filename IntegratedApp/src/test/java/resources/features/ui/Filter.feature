@@ -1,10 +1,11 @@
+@Filter
 Feature: Validation of different filter functionality
 
   Background:
     Given as a user I launch the website
     Then validate the header of the website
 
-  @SingleFilter  @Regression
+  @SingleFilter  @Regression  @Smoke
   Scenario Outline: Validation of only "<filterType>" filter functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -47,7 +48,7 @@ Feature: Validation of different filter functionality
     |product|
     |T-Shirt|
 
-  @ClearFilter  @Regression
+  @ClearFilter  @Regression @Smoke
   Scenario Outline: Validation of clear filters functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     And I apply the "<filterType>" filter

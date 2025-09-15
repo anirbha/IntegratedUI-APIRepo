@@ -1,10 +1,11 @@
+@Sort
 Feature: Validation of sorting features
 
   Background:
     Given as a user I launch the website
     Then validate the header of the website
 
-  @AllSortingOptions  @Regression
+  @AllSortingOptions  @Regression @Smoke
   Scenario Outline: Validate different sorting options
     And I enter a product name "<product>" in the searchbox and hit enter
     Then I validate different available sorting options

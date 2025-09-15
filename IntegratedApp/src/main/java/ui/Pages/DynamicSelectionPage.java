@@ -8,7 +8,7 @@ public class DynamicSelectionPage {
     String itemname;
 
 
-    public By searchBox=By.xpath("//input[@title='Search for Products, Brands and More']");
+    public By searchBox=By.xpath("//input[contains(@title,'Search')]");
     public By addToCartBtn=By.xpath("//button[contains(text(),'Add to cart')]");
     public By priceOfItem=By.xpath("(//span[contains(text(),'Price details')]/following::div[contains(text(),'item')]/following::div/span[contains(text(),'₹')])[1]");
     public By discount=By.xpath("(//span[contains(text(),'Price details')]/following::div[contains(text(),'Discount')]/following::div//span[contains(text(),'₹')])[1]");
