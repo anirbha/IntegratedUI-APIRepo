@@ -1,9 +1,10 @@
+@Navigation
 Feature: Navigation to different pages from the homepage
   Background:
     Given as a user I launch the website
     Then validate the header of the website
 
-  @NavigationFromNavigationDropdown  @Regression
+  @NavigationFromNavigationDropdown  @Regression @Smoke
   Scenario Outline: Navigation from the Navigation dropdown in homepage
     When I mousehover on the Navigation dropdown"<dropdown>"
     Then I should see all the options in the dropdown

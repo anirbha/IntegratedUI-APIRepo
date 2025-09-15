@@ -5,7 +5,7 @@ Feature: Validate different functionality regarding add to cart page
     Given as a user I launch the website
     Then validate the header of the website
 
-  @IncreaseQuantityOfAddedItem  @Regression
+  @IncreaseQuantityOfAddedItem  @Regression @Smoke
   Scenario Outline: Add product and increase the number and navigate to Payment
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -38,7 +38,7 @@ Feature: Validate different functionality regarding add to cart page
       |product|number|
       |Titan Edge|7  |
 
-  @RemoveFromCartFunc  @Regression
+  @RemoveFromCartFunc  @Regression @Smoke
   Scenario Outline: Validate remove functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -156,3 +156,16 @@ Feature: Validate different functionality regarding add to cart page
     Examples:
       |product|
       |iPhone 17 Pro|
+
+  @BuyNowBtnFunc  @Regression @Smoke
+  Scenario Outline: Search and buy a product
+    And I enter a product name "<product>" in the searchbox and hit enter
+    Then it should show the all the available products related to that product
+    And I click on the first product from the list
+    Then the product should be opened in a new tab
+    When I click on the Buy Now button
+    Then I should be navigated to the Checkout page
+
+    Examples:
+      |product|
+      |Samsung Galaxy Fit3|

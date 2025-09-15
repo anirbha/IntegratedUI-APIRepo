@@ -1,7 +1,6 @@
 package ui.Actions;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ui.Pages.LoginPage;
 import ui.Utils.ExtentManager;

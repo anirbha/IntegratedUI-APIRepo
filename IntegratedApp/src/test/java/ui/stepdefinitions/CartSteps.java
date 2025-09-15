@@ -1,6 +1,7 @@
 package ui.stepdefinitions;
 
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -113,5 +114,10 @@ public class CartSteps {
     @Then("add to cart button should not be present")
     public void addToCartButtonShouldNotBePresent() {
         cartAction.valAddToCartbtnnopresent();
+    }
+
+    @When("I click on the Buy Now button")
+    public void iClickOnTheBuyNowButton() {
+       cartAction.clickOnBuyNowTheButton();
     }
 }

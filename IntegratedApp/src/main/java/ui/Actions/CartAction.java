@@ -237,4 +237,12 @@ public class CartAction {
             ExtentManager.getExtentTest().fail("Add to Cart button is present", MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
         }
     }
+
+    public void clickOnBuyNowTheButton() {
+        WaitUtils.waitExplicitlyForWebElementVisible(driver,cartpage.buyNowBtn);
+        driver.findElement(cartpage.buyNowBtn).click();
+        Log.info("Clicked on the Buy now button");
+        ExtentManager.getExtentTest().info("Clicked on the Buy now button" , MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
+
+    }
 }

@@ -1,10 +1,11 @@
+@Login
 Feature: Validation of the login page and features
 
   Background:
     Given as a user I launch the website
     Then validate the header of the website
 
-    @RegisterAndLogin   @Regression
+    @RegisterAndLogin   @Regression @Smoke
     Scenario: User tries to register with the already registered number
       Then I validate the presence of Login CTA popup
       When I click on the Login button
