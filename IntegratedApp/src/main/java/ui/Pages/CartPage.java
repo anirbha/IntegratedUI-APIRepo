@@ -20,7 +20,7 @@ public class CartPage {
     public By moveToCartNotification=By.xpath("//div[contains(text(),'moved to your Cart.')]");
     public By homeLink=By.xpath("//div[@class='F9+fd2']");
 
-    public By cartIcon=By.xpath("//*[normalize-space()='Cart' or contains(normalize-space(),'Cart')]/ancestor::a[1]");
+    public By cartIcon=By.xpath("//a[text()='Cart']");
     public By loginPopUpCloseLink=By.xpath("//span[text()='✕']");
     public By loginPopUp=By.xpath("//div[@class='JFPqaw']");
     public By loginCTAPopup = By.xpath("//a[contains(text(),'Login')]");

@@ -21,7 +21,7 @@
         When I click on the compare pop up
         Then I should be able to navigate to the compare page
         Then the products should be present"<product1>""<product2>"
-
+          Then I retrieve all the specifications values into excel
 
         Examples:
         |product1|product2|
@@ -52,7 +52,7 @@
 
       Examples:
         |product|brandname|modelname|
-        |Samsung Galaxy S24 5G Snapdragon|Apple|iPhone 17 (White, 256 GB)|
+        |Samsung Galaxy S24 5G Snapdragon|Apple|iPhone 16 (White, 128 GB)|
 
     @CrossLinkVerification  @Regression
     Scenario Outline:Verify X link in compare page
@@ -73,7 +73,7 @@
       And I enter a product name "<product1>" in the searchbox and hit enter
       Then it should show the all the available products related to that product
       And I click on the first product from the list
-#      Then the product should be opened in a new tab
+#      Then the product should be opened in a new tab ctrlA+del
       And I check the compare checkbox for the product
       And I enter a product name "<product2>" in the searchbox and hit enter
       Then it should show the all the available products related to that product

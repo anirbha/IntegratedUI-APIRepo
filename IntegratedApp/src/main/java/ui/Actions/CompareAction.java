@@ -5,11 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ui.Pages.ComparePage;
-import ui.Utils.ExtentManager;
-import ui.Utils.Log;
-import ui.Utils.TestUtils;
-import ui.Utils.WaitUtils;
+import ui.Utils.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static ui.Utils.TestUtils.allElementsEqual;
@@ -20,6 +18,8 @@ public class CompareAction {
     ComparePage comparePage=new ComparePage();
     String brandname;
     String modelname;
+    ExcelUtils excelUtils;
+    String product1,product2;
     
     public CompareAction(WebDriver driver)
     {
@@ -59,11 +59,12 @@ public class CompareAction {
             Assert.assertTrue(driver.findElement(comparePage.comparedProducts(product1)).isDisplayed());
             Log.info(product1 + " is present in the compare page");
             ExtentManager.getExtentTest().info(product1 + " is present in the compare page");
+            this.product1=driver.findElement(comparePage.comparedProducts(product1)).getText();
             Assert.assertTrue(driver.findElement(comparePage.comparedProducts(product2)).isDisplayed());
             Log.info(product2 + " is present in the compare page");
             ExtentManager.getExtentTest().info(product2 + " is present in the compare page");
             ExtentManager.getExtentTest().pass("Both the products are present in the compare page",MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
-
+            this.product2=driver.findElement(comparePage.comparedProducts(product1)).getText();
         }catch (Exception e)
         {
             Log.info("Both or any of the products is not present in the compare page");
@@ -125,7 +126,7 @@ public class CompareAction {
 
         for (WebElement model: models)
         {
-            if(model.getText().equalsIgnoreCase(modelname))
+            if(model.getText().equalsIgnoreCase(brandname+" "+modelname))
             {
                 model.click();
                 break;
@@ -179,6 +180,36 @@ public class CompareAction {
         } catch (Exception e) {
             Log.info("Warning msg displayed "+driver.findElement(comparePage.diffProdCompareErrMsg).getText());
             ExtentManager.getExtentTest().pass("Warning msg displayed "+driver.findElement(comparePage.diffProdCompareErrMsg).getText(),MediaEntityBuilder.createScreenCaptureFromPath(TestUtils.takeScreenshot(driver)).build());
+        }
+    }
+
+    public void writeProductSpecificationInExcel() {
+        //This method will write the comparison properties into the excel sheet.
+
+            excelUtils = new ExcelUtils(TestUtils.getProperty("ExcelSheetName"), System.getProperty("user.dir")+TestUtils.getProperty("ExcelOutputPath"));
+
+            excelUtils.writeHeader(new String[]{TestUtils.getProperty("ExcelSheetHeaderCol1"), product1, product2});
+
+        //for the 1st row to record price
+
+        List<WebElement> priceslist = driver.findElements(comparePage.comparedPriceLists);
+
+        List<String> prices = new ArrayList<>();
+
+        for (WebElement element : priceslist) {
+            prices.add(element.getText());
+        }
+
+        excelUtils.writeRow(1, new String[] { "Price",prices.getFirst(), prices.getLast()});
+
+        try {
+            excelUtils.saveAndClose();
+            ExtentManager.getExtentTest().pass("Details successfully captured in the excel");
+            Log.info("Details successfully captured in the excel");
+
+        } catch (Exception e) {
+            ExtentManager.getExtentTest().fail("Exception occurred while save and closing of the excel" + e);
+            Log.error("Exception occurred while save and closing of the excel");
         }
     }
 }

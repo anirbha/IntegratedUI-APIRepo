@@ -27,7 +27,7 @@ public class WaitUtils {
     }
 
     public static void waitExplicitlyForElemTobeInvisible(WebDriver driver,By object)  {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(object)));
 

@@ -15,6 +15,7 @@ public class ComparePage {
     public By chooseProductDrpDwn=By.xpath("(//div[normalize-space(text())='Choose a Product'])[1]");
     public By crosslinkOnProduct=By.xpath("(//div[@title='Remove Product'])[2]");
     public By diffProdCompareErrMsg=By.xpath("//div[contains(text(),'You can only compare similar products')]");
+    public By comparedPriceLists=By.xpath("//div[@class='row']//div[@class='Nx9bqj']");
 
     public By comparedProducts(String product)
     {
@@ -27,5 +28,6 @@ public class ComparePage {
     public By chooseModelList(String modelname)
     {
         return By.xpath("//div[@class='_8W-V8i'][contains(text(),'"+modelname+"')]");
+        //div[@class='_8W-V8i'][contains(text(),'iPhone 17 (Mist Blue, 256 GB)')]
     }
 }
