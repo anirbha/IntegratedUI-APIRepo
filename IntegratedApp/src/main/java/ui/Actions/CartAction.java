@@ -207,7 +207,7 @@ public class CartAction {
         }
         WaitUtils.waitExplicitlyForElemTobeInvisible(driver,cartpage.loginCTAPopup);
 
-        WaitUtils.waitExplicitlyForElemTobeClickable(driver,cartpage.cartIcon);
+//        WaitUtils.waitExplicitlyForElemTobeClickable(driver,cartpage.cartIcon);
         driver.findElement(cartpage.cartIcon).click();
         Log.info("Cart icon is clicked");
         ExtentManager.getExtentTest().info("Cart icon is clicked");

@@ -1,6 +1,7 @@
 package ui.Utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -113,6 +114,17 @@ public class MouseHover {
         actions.release(element).perform();
 
         return targetElementNames;
+    }
+
+    public static void clearfield(WebDriver driver,By element)
+    {
+        // Create an Actions object
+        Actions actions = new Actions(driver);
+
+        driver.findElement(element).click();
+
+        // Perform Ctrl+A (select all) and Delete
+        actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).perform();
     }
 
 

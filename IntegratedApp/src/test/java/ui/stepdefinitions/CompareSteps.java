@@ -1,6 +1,7 @@
 package ui.stepdefinitions;
 
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -80,5 +81,10 @@ public class CompareSteps {
     @When("I try to check the compare checkbox of product")
     public void iTryToCheckTheCompareCheckboxOfProduct() {
         compareAction.clickOnTheCompareChkBoxInProductPg();
+    }
+
+    @Then("I retrieve all the specifications values into excel")
+    public void iRetrieveAllTheSpecificationsValuesIntoExcel() {
+        compareAction.writeProductSpecificationInExcel();
     }
 }

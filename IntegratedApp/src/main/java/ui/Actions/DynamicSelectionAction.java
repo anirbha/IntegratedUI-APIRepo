@@ -8,10 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ui.Pages.DynamicSelectionPage;
-import ui.Utils.ExtentManager;
-import ui.Utils.Log;
-import ui.Utils.TestUtils;
-import ui.Utils.WaitUtils;
+import ui.Utils.*;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -206,7 +204,9 @@ public class DynamicSelectionAction {
     public void enterProductNameInSearchBox(String product) {
         this.product=product;
         WaitUtils.waitExplicitlyForElemTobeClickable(driver,dynamicSelectionPage.searchBox);
-        driver.findElement(dynamicSelectionPage.searchBox).clear();
+        driver.findElement(dynamicSelectionPage.searchBox).click();
+        MouseHover.clearfield(driver,dynamicSelectionPage.searchBox);
+//        driver.findElement(dynamicSelectionPage.searchBox).clear();
         driver.findElement(dynamicSelectionPage.searchBox).sendKeys(product);
         TestUtils.pressEnterKey(driver, dynamicSelectionPage.searchBox);
         Log.info("Entered the product name in the search box "+ product);

@@ -123,7 +123,7 @@ Feature: Validate different functionality regarding add to cart page
       |product|
       |Samsung Galaxy Fit3|
 
-  @NavigationToCartIcon   @Regression
+    @NavigationToCartIcon   @Regression
   Scenario Outline: Navigation from Cart icon
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
