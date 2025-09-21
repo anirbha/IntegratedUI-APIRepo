@@ -7,7 +7,7 @@ import org.testng.annotations.Listeners;
 @CucumberOptions(
         features = {"src/test/java/resources/features/ui"},
         glue = {"ui/stepdefinitions","hooks"},
-        tags = "@WishListAProduct",
+        tags = "@ui",
         plugin = {"pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 
