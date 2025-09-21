@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "username": "JOSI",
+    "firstName": "John",
+    "lastName": "Sina",
+    "email": "josi@example.com",
+    "password": "password123",
+    "phone": "555-1234",
+    "userStatus": 1
+  },
+  {
+    "id": 2,
+    "username": "asmita",
+    "firstName": "Asmita",
+    "lastName": "Raha",
+    "email": "asmita@example.com",
+    "password": "welcome",
+    "phone": "555-5678",
+    "userStatus": 1
+  },
+  {
+    "id": 3,
+    "username": "Debo",
+    "firstName": "Debolina",
+    "lastName": "Chakraborty",
+    "email": "debocha@example.com",
+    "password": "pwd",
+    "phone": "555-9922",
+    "userStatus": 1
+  },
+  {
+    "id": 4,
+    "username": "ashRa",
+    "firstName": "Ravi",
+    "lastName": "Ashwin",
+    "email": "ravi@example.com",
+    "password": "bowling",
+    "phone": "555-7788",
+    "userStatus": 1
+  }
+
+]

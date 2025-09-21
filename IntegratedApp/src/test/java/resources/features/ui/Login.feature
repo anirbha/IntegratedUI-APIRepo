@@ -5,7 +5,7 @@ Feature: Validation of the login page and features
     Given as a user I launch the website
     Then validate the header of the website
 
-    @RegisterAndLogin   @Regression @Smoke
+    @RegisterAndLogin   @Regression @Smoke  @ui
     Scenario: User tries to register with the already registered number
       Then I validate the presence of Login CTA popup
       When I click on the Login button
@@ -16,7 +16,7 @@ Feature: Validation of the login page and features
       When I click on the Continue button
       Then it should show Login text again
 
-    @RegistrationWithInvalidNumbers   @NegativeScenarios  @Regression
+    @RegistrationWithInvalidNumbers   @NegativeScenarios  @Regression  @ui
     Scenario Outline:User tries to register with invalid numbers when "<scenario>"
       Then I validate the presence of Login CTA popup
       When I click on the Login button

@@ -4,7 +4,7 @@ Feature: Navigation to different pages from the homepage
     Given as a user I launch the website
     Then validate the header of the website
 
-  @NavigationFromNavigationDropdown  @Regression @Smoke
+  @NavigationFromNavigationDropdown  @Regression @Smoke @ui
   Scenario Outline: Navigation from the Navigation dropdown in homepage
     When I mousehover on the Navigation dropdown"<dropdown>"
     Then I should see all the options in the dropdown
@@ -18,7 +18,7 @@ Feature: Navigation to different pages from the homepage
     |dropdown|option   |subOption|
     |Electronics|Gaming|Gaming Keyboards|
 
-  @NavigationFromNavigationBar  @Regression
+  @NavigationFromNavigationBar  @Regression @ui
   Scenario Outline: Navigation from the Navigation bar where dropdown option is not present in homepage
     When I click on any option from the Navigation bar "<navOption>"
     Then I should be navigated to the respective page from navigation "<navOption>"
@@ -28,7 +28,7 @@ Feature: Navigation to different pages from the homepage
     |navOption      |brandname|
     |Mobiles & Tablets  | Motorola    |
 
-  @NavigationFromNavigationBarProducts  @Regression
+  @NavigationFromNavigationBarProducts  @Regression @ui
   Scenario Outline: Navigation from the Navigation bar where dropdown option is not present in homepage
     When I click on any option from the Navigation bar "<navOption>"
     Then I should be navigated to the respective page from navigation "<navOption>"
@@ -38,7 +38,7 @@ Feature: Navigation to different pages from the homepage
       |navOption          |brandname|
       |Mobiles & Tablets  | Samsung |
 
-  @InvalidScenarioWrongBrandHeaderSearch  @Regression   @NegativeScenarios
+  @InvalidScenarioWrongBrandHeaderSearch  @Regression   @NegativeScenarios @ui
   Scenario Outline: Navigation from the Navigation bar where dropdown option is not present and search for wrong brand
     When I click on any option from the Navigation bar "<navOption>"
     Then I should be navigated to the respective page from navigation "<navOption>"

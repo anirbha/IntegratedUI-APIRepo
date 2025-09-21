@@ -1,17 +1,22 @@
 package ui.Utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -20,6 +25,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 
 public class TestUtils {
@@ -172,6 +179,30 @@ public class TestUtils {
             currentPage = Integer.parseInt(matcher.group(1));
         }
         return currentPage;
+    }
+
+    public static JsonNode JsonReader(String path)
+    {
+        JsonNode node = null;
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonpath = TestUtils.getProperty(path);
+        try{
+            String jsoncontent = new String(Files.readAllBytes(Paths.get(jsonpath)));
+            node = mapper.readTree(jsoncontent);
+            
+        } catch (IOException e) {
+            Log.info("exception occurred "+e);
+        }
+
+        return node;
+    }
+
+    public static void responseValidator(Response response, String status)
+    {
+        Log.info("Status code" + response.getStatusCode());
+        AssertJUnit.assertEquals("Status code matches",Integer.parseInt(status), response.getStatusCode());
+        ExtentManager.getExtentTest().pass("Status code matches as expected");
+        Log.info("Status code matches as expected");
     }
 }
 

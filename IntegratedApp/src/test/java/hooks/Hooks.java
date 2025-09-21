@@ -8,7 +8,7 @@ import ui.Utils.ExtentManager;
 
 public class Hooks {
 
-    @Before
+    @Before("@ui")
     public void setUp(Scenario scenario) {
 
         ExtentManager.createTest(scenario.getName());
@@ -16,11 +16,19 @@ public class Hooks {
         ExtentManager.getExtentTest().info("Driver initialized for scenario: " + scenario.getName());
     }
 
-    @After
+    @After("@ui")
     public void tearDown(Scenario scenario) {
 
         DriverManager.quitDriver();
         ExtentManager.getInstance().flush();
+    }
+
+    @Before("@api")
+    public void setApi(Scenario scenario) {
+
+        ExtentManager.createTest(scenario.getName());
+
+        ExtentManager.getExtentTest().info("Driver initialized for scenario: " + scenario.getName());
     }
 
 }

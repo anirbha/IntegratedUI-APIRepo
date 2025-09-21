@@ -5,7 +5,7 @@ Feature: Validate different functionality regarding add to cart page
     Given as a user I launch the website
     Then validate the header of the website
 
-  @IncreaseQuantityOfAddedItem  @Regression @Smoke
+  @IncreaseQuantityOfAddedItem  @Regression @Smoke @ui
   Scenario Outline: Add product and increase the number and navigate to Payment
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -23,7 +23,7 @@ Feature: Validate different functionality regarding add to cart page
     |product|number|
     |Samsung Galaxy Fit3|3  |
 
-  @IncreaseQuantityUptoLimit  @Regression
+  @IncreaseQuantityUptoLimit  @Regression @ui
   Scenario Outline: Add product and increase the number till it is allowed
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -38,8 +38,8 @@ Feature: Validate different functionality regarding add to cart page
       |product|number|
       |Titan Edge|7  |
 
-  @RemoveFromCartFunc  @Regression @Smoke
-  Scenario Outline: Validate remove functionality
+  @RemoveFromCartFunc  @Regression @Smoke @ui
+  Scenario Outline: Validate <"button"> button functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
     And I click on the first product from the list
@@ -57,7 +57,7 @@ Feature: Validate different functionality regarding add to cart page
       |Samsung Galaxy Fit3|Remove|
       |Samsung Galaxy Fit3|Cancel|
 
-  @PriceCalculation  @Regression
+  @PriceCalculation  @Regression @ui
   Scenario Outline: Validate price details calculation
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -73,7 +73,7 @@ Feature: Validate different functionality regarding add to cart page
     |product|
     |Samsung Galaxy Fit3|
 
-   @SaveLaterOrMoveCartLinkFunc   @Regression
+   @SaveLaterOrMoveCartLinkFunc   @Regression  @ui
   Scenario Outline: Save for later/Move to cart functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -91,8 +91,8 @@ Feature: Validate different functionality regarding add to cart page
       |product|
       |Samsung Galaxy Fit3|
 
-  @DecreaseTheCountBelowOne   @Regression   @NegativeScenarios
-  Scenario Outline: Can not reduce the the product number less than one
+  @DecreaseTheCountBelowOne   @Regression   @NegativeScenarios  @ui
+  Scenario Outline: Unable to reduce the product number less than one
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
     And I click on the first product from the list
@@ -106,7 +106,7 @@ Feature: Validate different functionality regarding add to cart page
     |product|
     |Samsung Galaxy Fit3|
 
-  @ValidateIconsInSavedFrLater    @Regression   @NegativeScenarios
+  @ValidateIconsInSavedFrLater    @Regression   @NegativeScenarios  @ui
   Scenario Outline: Product count increase/decrease link is disabled in saved for later segment
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -123,7 +123,7 @@ Feature: Validate different functionality regarding add to cart page
       |product|
       |Samsung Galaxy Fit3|
 
-    @NavigationToCartIcon   @Regression
+    @NavigationToCartIcon   @Regression  @ui
   Scenario Outline: Navigation from Cart icon
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -144,7 +144,7 @@ Feature: Validate different functionality regarding add to cart page
       |product|
       |Samsung Galaxy Fit3|
 
-  @NoAddToCartButton    @Regression  @NegativeScenarios
+  @NoAddToCartButton    @Regression  @NegativeScenarios  @ui
   Scenario Outline: No Add To Cart button for product currently unavailable
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -157,7 +157,7 @@ Feature: Validate different functionality regarding add to cart page
       |product|
       |iPhone 17 Pro|
 
-  @BuyNowBtnFunc  @Regression @Smoke
+  @BuyNowBtnFunc  @Regression @Smoke  @ui
   Scenario Outline: Search and buy a product
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
