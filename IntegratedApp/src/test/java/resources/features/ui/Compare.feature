@@ -6,7 +6,7 @@
       Given as a user I launch the website
       Then validate the header of the website
 
-        @AddToCompare   @Regression @Smoke
+        @AddToCompare   @Regression @Smoke  @ui
       Scenario Outline:Verify able to add 2 products for comparison
         And I enter a product name "<product1>" in the searchbox and hit enter
         Then it should show the all the available products related to that product
@@ -27,7 +27,7 @@
         |product1|product2|
         |realme 15T 5G|OPPO Reno14 Pro 5G   |
 
-    @AddToCompareForSameModel   @Regression
+    @AddToCompareForSameModel   @Regression  @ui
     Scenario Outline:Verify able to add 2 products for comparison of same model
       And I enter a product name "<product>" in the searchbox and hit enter
       Then it should show the all the available products related to that product
@@ -40,8 +40,8 @@
       |product|
       |Samsung Galaxy S24 5G Snapdragon       |
 
-    @AddProductInAddToComparePg   @Regression
-    Scenario Outline:Verify able to add 2 products for comparison of same model
+    @AddProductInAddToComparePg   @Regression  @ui
+    Scenario Outline:Verify able to add product from the compare page
       And I enter a product name "<product>" in the searchbox and hit enter
       Then it should show the all the available products related to that product
       And I check the compare checkboxes of the first 2 products
@@ -54,7 +54,7 @@
         |product|brandname|modelname|
         |Samsung Galaxy S24 5G Snapdragon|Apple|iPhone 16 (White, 128 GB)|
 
-    @CrossLinkVerification  @Regression
+    @CrossLinkVerification  @Regression  @ui
     Scenario Outline:Verify X link in compare page
       And I enter a product name "<product>" in the searchbox and hit enter
       Then it should show the all the available products related to that product
@@ -68,7 +68,7 @@
         |product|
         |Samsung Galaxy S24 5G Snapdragon       |
 
-    @InvalidComparison    @Regression   @NegativeScenarios
+    @InvalidComparison    @Regression   @NegativeScenarios  @ui
     Scenario Outline: Only same type of products can be compared
       And I enter a product name "<product1>" in the searchbox and hit enter
       Then it should show the all the available products related to that product

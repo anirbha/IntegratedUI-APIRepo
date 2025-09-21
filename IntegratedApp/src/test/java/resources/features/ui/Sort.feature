@@ -5,7 +5,7 @@ Feature: Validation of sorting features
     Given as a user I launch the website
     Then validate the header of the website
 
-  @AllSortingOptions  @Regression @Smoke
+  @AllSortingOptions  @Regression @Smoke  @ui
   Scenario Outline: Validate different sorting options
     And I enter a product name "<product>" in the searchbox and hit enter
     Then I validate different available sorting options
@@ -13,7 +13,7 @@ Feature: Validation of sorting features
     |product|
     |headphone|
 
-  @SortingFunc  @Regression
+  @SortingFunc  @Regression  @ui
   Scenario Outline: Validate sorting functionality of the "<sorting>"
     And I enter a product name "<product>" in the searchbox and hit enter
     When I click on the "<sorting>" sorting to validate sorting
@@ -27,7 +27,7 @@ Feature: Validation of sorting features
     |pendrive|Newest First        |
     |earbuds|Discount            |
 
-  @SortingFuncWithReload  @Regression
+  @SortingFuncWithReload  @Regression  @ui
   Scenario Outline: Validate sorting persisting after page reloads
     And I enter a product name "<product>" in the searchbox and hit enter
     When I click on the "<sorting>" sorting to validate sorting

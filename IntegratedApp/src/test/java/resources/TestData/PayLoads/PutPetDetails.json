@@ -1,0 +1,18 @@
+{
+  "id": 5,
+  "category": {
+    "id": 5,
+    "name": "freddy"
+  },
+  "name": "freddy",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 5,
+      "name": "freddy"
+    }
+  ],
+  "status": "available"
+}

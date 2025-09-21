@@ -5,7 +5,7 @@ Feature: Pagination
     Given as a user I launch the website
     Then validate the header of the website
 
-  @NavToPageByNumber  @Regression @Smoke
+  @NavToPageByNumber  @Regression @Smoke  @ui
   Scenario Outline: Navigate to different page by page number
   And I enter a product name "<product>" in the searchbox and hit enter
   Then I validate the current page number
@@ -16,7 +16,7 @@ Feature: Pagination
     |product|pageno|
     |T-shirt|2      |
 
-  @NavToPageByButton  @Regression @Smoke
+  @NavToPageByButton  @Regression @Smoke  @ui
   Scenario Outline: Navigate to pages by button "<button>"
     And I enter a product name "<product>" in the searchbox and hit enter
     Then I validate the current page number
@@ -30,7 +30,7 @@ Feature: Pagination
       |T-shirt|3      |Next  |
       |T-shirt|3      |Previous  |
 
-  @PreviousBtnDisabled  @Regression   @NegativeScenarios
+  @PreviousBtnDisabled  @Regression   @NegativeScenarios  @ui
   Scenario Outline: Validate the Previous button is disabled for the first page
     And I enter a product name "<product>" in the searchbox and hit enter
     Then I validate the current page number
@@ -40,7 +40,7 @@ Feature: Pagination
     |product|
     |T-shirt|
 
-  @NextBtnDisabled  @Regression  @NegativeScenarios
+  @NextBtnDisabled  @Regression  @NegativeScenarios  @ui
   Scenario Outline: Validate the Next button is disabled for the last page
     And I enter a product name "<product>" in the searchbox and hit enter
     Then I validate the current page number

@@ -6,7 +6,7 @@ Feature: Validate different ways to select element dynamically
     Then validate the header of the website
 
 
-  @SelectItemByStorage  @Regression
+  @SelectItemByStorage  @Regression  @ui
   Scenario Outline: Search by a product name and change its capacity
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -18,7 +18,7 @@ Feature: Validate different ways to select element dynamically
       | product | storage |
       |iPhone 16 Pro Max|512 GB|
 
-  @SelectItemByColour  @Regression
+  @SelectItemByColour  @Regression  @ui
   Scenario Outline: Search by a product name and change its colour
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product

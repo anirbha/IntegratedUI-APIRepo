@@ -5,7 +5,7 @@ Feature: Validation of different filter functionality
     Given as a user I launch the website
     Then validate the header of the website
 
-  @SingleFilter  @Regression  @Smoke
+  @SingleFilter  @Regression  @Smoke @ui
   Scenario Outline: Validation of only "<filterType>" filter functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -19,7 +19,7 @@ Feature: Validation of different filter functionality
         | fabric       | T-Shirt    | Cotton Blend     |
         | Color        | T-Shirt    | White             |
 
-  @PriceFilter  @Regression
+  @PriceFilter  @Regression  @ui
   Scenario Outline: Validation of Price filter functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     Then it should show the all the available products related to that product
@@ -31,7 +31,7 @@ Feature: Validation of different filter functionality
         | product    |minimum|maximum|
         | T-Shirt    | 300   | 1000  |
 
-  @MultipleFilter  @Regression
+  @MultipleFilter  @Regression  @ui
   Scenario Outline: Validation of multiple filters functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     When I apply multiple filters:
@@ -48,7 +48,7 @@ Feature: Validation of different filter functionality
     |product|
     |T-Shirt|
 
-  @ClearFilter  @Regression @Smoke
+  @ClearFilter  @Regression @Smoke  @ui
   Scenario Outline: Validation of clear filters functionality
     And I enter a product name "<product>" in the searchbox and hit enter
     And I apply the "<filterType>" filter
@@ -66,7 +66,7 @@ Feature: Validation of different filter functionality
     |product|filterType|removeFilter|
     |T-shirt|Brand     |ADIDAS        |
 
-  @Noproductsfound  @Regression   @NegativeScenarios
+  @Noproductsfound  @Regression   @NegativeScenarios  @ui
   Scenario Outline: Validation of no products found
     And I enter a product name "<product>" in the searchbox and hit enter
     And I check the "<filterName>" checkbox under the filter
