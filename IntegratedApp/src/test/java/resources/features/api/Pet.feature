@@ -36,7 +36,7 @@ Feature: Validate different API responses for Pet endpoint
 
     Examples:
       |id|responsecode|
-      |11|200     |
+      |18|200     |
 
   @FindByStatus  @api  @Regression
   Scenario Outline: Finds pets by status

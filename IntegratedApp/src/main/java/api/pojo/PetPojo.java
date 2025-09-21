@@ -14,6 +14,10 @@ public class PetPojo {
     @Getter
     private String status;
 
+public PetPojo()
+{}
 
+public PetPojo(int id,String name, String status)
+{}
 
 }

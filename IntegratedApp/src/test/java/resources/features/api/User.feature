@@ -59,7 +59,7 @@ Feature: Validate different operations using on users with User endpoint
 
     Examples:
       |username|password|statusCode|
-      | JAB   | football    |200   |
+      | ashRa   | bowling    |200   |
 
   @DeleteInvalid @api  @Regression
   Scenario Outline: Deleting a user which are not logged in

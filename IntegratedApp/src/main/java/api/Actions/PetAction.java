@@ -37,7 +37,7 @@ public class PetAction {
         this.response=response;
     }
 
-    public Response createPet() throws IOException {
+    public Response createPet()  {
 
         node=TestUtils.JsonReader("NewPetId");
         // Access fields dynamically
@@ -63,7 +63,7 @@ public class PetAction {
     }
 
     public void valSameIdAndStatus(Response response,String id, String status) {
-
+        actPetPojo=new PetPojo();
         this.id = response.jsonPath().getInt("id");
         this.status = response.jsonPath().getString("status");
 
@@ -134,6 +134,8 @@ public class PetAction {
     }
 
     public Response deleteId(String id) {
+        createPet();
+
         endpoint=TestUtils.getProperty("PetEndPointGet")+id;
 
         response=BaseApiTest.getRequest(BASE_URL,endpoint).header("api_key","special-key").delete();

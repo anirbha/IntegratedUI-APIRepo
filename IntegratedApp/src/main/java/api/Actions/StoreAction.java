@@ -97,6 +97,7 @@ public class StoreAction {
 
     public Response fetchPurchaseByOrderId(String id) {
         this.id=id;
+        orderForPurchase();
         endpoint=TestUtils.getProperty("PurchaseOrderIdEndPoint")+id;
 
         response=BaseApiTest.getRequest(BASE_URL,endpoint).get();
