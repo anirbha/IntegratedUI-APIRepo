@@ -31,4 +31,9 @@ public class Hooks {
         ExtentManager.getExtentTest().info("Driver initialized for scenario: " + scenario.getName());
     }
 
+    @After("@api")
+    public void tearDownAPI(Scenario scenario) {
+        ExtentManager.getInstance().flush();
+    }
+
 }
