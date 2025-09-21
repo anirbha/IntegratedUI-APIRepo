@@ -26,7 +26,7 @@ Feature: Validate different API responses for Store endpoint
     Then id in the response should match with the id
     Examples:
       |id|responsecode|
-      |5|200     |
+      |8|200     |
 
   @DeletePurchaseByOrderId @api  @Regression
   Scenario Outline: Delete pet identity
