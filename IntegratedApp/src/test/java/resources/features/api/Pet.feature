@@ -2,7 +2,7 @@
 
 Feature: Validate different API responses for Pet endpoint
 
-  @PetPost @api  @Regression
+  @PetPost @api  @Regression @Smoke
   Scenario Outline: Create a new pet identity
     Given I create a new pet
     Then the status code should be "<responsecode>"
@@ -11,7 +11,7 @@ Feature: Validate different API responses for Pet endpoint
       | responsecode |
       | 200      |
 
-  @PetGet @api @Regression
+  @PetGet @api @Regression @Smoke
   Scenario Outline: Get a new pet identity
     Given I fetch a pet by id "<id>"
     Then the status code should be "<responsecode>"
@@ -20,7 +20,7 @@ Feature: Validate different API responses for Pet endpoint
       |id|responsecode|
       |1|200     |
 
-  @PetPut @api  @Regression
+  @PetPut @api  @Regression @Smoke
   Scenario Outline: Update pet identity
     Given I update the pet name and status
     Then the status code should be "<responsecode>"
@@ -29,7 +29,7 @@ Feature: Validate different API responses for Pet endpoint
      |responsecode|
      |200     |
 
-  @PetDelete    @api  @Regression
+  @PetDelete    @api  @Regression @Smoke
   Scenario Outline: Delete pet identity
     Given I delete the pet id "<id>"
     Then the status code should be "<responsecode>"
@@ -50,7 +50,7 @@ Feature: Validate different API responses for Pet endpoint
     |sold     |200         |
 
 
-@FetchPetByInvalidId @api  @Regression
+@FetchPetByInvalidId @api  @Regression  @NegativeScenarios
 Scenario Outline:  Get pet by invalid/non-existent ID
     Given I fetch a pet by an invalid id "<id>"
     Then the status code should be "<responsecode>"
@@ -59,7 +59,7 @@ Scenario Outline:  Get pet by invalid/non-existent ID
   |id|responsecode|message|
   |456| 404       |Pet not found|
 
-@InvalidPayLoadForPut  @api  @Regression
+@InvalidPayLoadForPut  @api  @Regression  @NegativeScenarios
 Scenario Outline:  Update pet with invalid status
   Given I try to update with invalid status
   Then the status code should be "<responsecode>"
@@ -68,7 +68,7 @@ Scenario Outline:  Update pet with invalid status
     |responsecode|message|
     |400     |bad input  |
 
-  @DeleteUsingInvalidId  @api  @Regression
+  @DeleteUsingInvalidId  @api  @Regression  @NegativeScenarios
 Scenario Outline:  Delete pet by invalid ID
   Given I try to delete the pet id "<id>"
   Then the status code should be "<responsecode>"
@@ -77,7 +77,7 @@ Scenario Outline:  Delete pet by invalid ID
     |id|responsecode|
     |9999999999|404 |
 
-  @SearchByInvalidStatus @api  @Regression
+  @SearchByInvalidStatus @api  @Regression @NegativeScenarios
   Scenario Outline:  Find pets by invalid status value
     Given I fetch pets by status "<status>"
     Then the status code should be "<responsecode>"
@@ -87,6 +87,12 @@ Scenario Outline:  Delete pet by invalid ID
       |status   |responsecode|
       |bowling  |200         |
 
-
-
+  @JSONValidationPet @api  @Regression
+  Scenario Outline: Validate JSON Schema
+    Given I fetch a pet by id "<id>"
+    Then the status code should be "<responsecode>"
+    Then I validate the JSON Schema of the response
+    Examples:
+      |id|responsecode|
+      |1|200     |
 

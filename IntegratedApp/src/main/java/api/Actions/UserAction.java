@@ -19,6 +19,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+
 public class UserAction {
     private final String BASE_URL= TestUtils.getProperty("BASE_URL");
     private JsonNode node;
@@ -175,5 +177,22 @@ public class UserAction {
 
         Log.info(response.body().asString());
         ExtentManager.getExtentTest().info(response.body().asString());
+    }
+
+    public Response getUserDetails(String userid) {
+        endpoint=TestUtils.getProperty("UserEndPoint")+"/"+userid;
+        response=BaseApiTest.getRequest(BASE_URL,endpoint).get();
+        Log.info(response.body().asString());
+        ExtentManager.getExtentTest().info(response.body().asString());
+        return response;
+
+        
+    }
+
+    public void validateJSONSchema() {
+        String schemaFile=TestUtils.getProperty("UserResponseJSONSchema");
+        response.then().assertThat().body(matchesJsonSchema(new File(schemaFile)));
+        Log.info("JSON schema matches");
+        ExtentManager.getExtentTest().pass("JSON schema matches");
     }
 }

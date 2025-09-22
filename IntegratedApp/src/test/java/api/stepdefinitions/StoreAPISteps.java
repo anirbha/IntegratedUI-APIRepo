@@ -66,4 +66,9 @@ public class StoreAPISteps {
     public void iOrderForThePurchasingThePetWithInvalidData() {
        response=store.invalidOrderFrPurchase();
     }
+
+    @Then("I validate the JSON Schema")
+    public void iValidateTheJSONSchema() {
+        store.validateJsonSchema();
+    }
 }

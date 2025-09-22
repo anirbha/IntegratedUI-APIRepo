@@ -91,4 +91,9 @@ public class PetAPISteps {
     public void theResponseShouldBeNull() {
         petAction.validateResponseNull();
     }
+
+    @Then("I validate the JSON Schema of the response")
+    public void iValidateTheJSONSchemaOfTheResponse() {
+        petAction.JsonSchemaValidation();
+    }
 }

@@ -76,4 +76,13 @@ public class UserAPISteps {
     }
 
 
+    @Given("I fetch a user details {string}")
+    public void iFetchAUserDetails(String userid) {
+        response= useraction.getUserDetails(userid);
+    }
+
+    @Then("I validate the JSON Schema of it")
+    public void iValidateTheJSONSchemaOfIt() {
+       useraction.validateJSONSchema();
+    }
 }

@@ -1,6 +1,7 @@
+@StoreAPI
 Feature: Validate different API responses for Store endpoint
 
- @StoreInventory @api  @Regression
+ @StoreInventory @api  @Regression @Smoke
  Scenario Outline: To get pet inventories by status
    Given I fetch the inventories by status
    Then the status code should be "<responsecode>" for inventory
@@ -9,7 +10,7 @@ Feature: Validate different API responses for Store endpoint
      |responsecode|
      |200     |
 
-  @OrderPurchase @api  @Regression
+  @OrderPurchase @api  @Regression  @Smoke
   Scenario Outline: To place order to purchase
     Given I order for the purchasing the pet
     Then the status code should be "<responsecode>" for inventory
@@ -19,7 +20,7 @@ Feature: Validate different API responses for Store endpoint
       |responsecode|
       |200     |
 
-  @FindPurchaseByOrderId @api  @Regression
+  @FindPurchaseByOrderId @api  @Regression @Smoke
   Scenario Outline: Find Purchase by order id
     Given I fetch the purchase by order id "<id>"
     Then the status code should be "<responsecode>" for inventory
@@ -28,7 +29,7 @@ Feature: Validate different API responses for Store endpoint
       |id|responsecode|
       |8|200     |
 
-  @DeletePurchaseByOrderId @api  @Regression
+  @DeletePurchaseByOrderId @api  @Regression @Smoke
   Scenario Outline: Delete pet identity
     Given I delete the purchase by order id "<id>"
     Then the status code should be "<responsecode>" for inventory
@@ -48,7 +49,7 @@ Feature: Validate different API responses for Store endpoint
       |responsecode|error msg|
       |500     |something bad happened|
 
-  @FindPurchaseWithInvalidOrder  @api  @Regression
+  @FindPurchaseWithInvalidOrder  @api  @Regression @NegativeScenarios
   Scenario Outline: To find purchase with invalid order id
     Given I fetch the purchase by order id "<id>"
     Then the status code should be "<responsecode>" for inventory
@@ -57,3 +58,13 @@ Feature: Validate different API responses for Store endpoint
     Examples:
       |id|responsecode|error msg|
       |25  |404     |Order not found|
+
+
+  @JSONValidationStore @api @Regression
+  Scenario Outline: Validate JSON Schema for Store order
+    Given I fetch the purchase by order id "<id>"
+    Then the status code should be "<responsecode>"
+    Then I validate the JSON Schema
+    Examples:
+      |id|responsecode|
+      |9|200     |

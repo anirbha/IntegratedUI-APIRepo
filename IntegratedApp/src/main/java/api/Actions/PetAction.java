@@ -10,11 +10,13 @@ import ui.Utils.ExtentManager;
 import ui.Utils.Log;
 import ui.Utils.TestUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.delete;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class PetAction {
@@ -254,5 +256,12 @@ public class PetAction {
         Assert.assertEquals(actPetPojo.getStatus(),expPetPojo.getStatus(),"status validation");
         Log.info("Status is matched with response "+ expPetPojo.getStatus());
         ExtentManager.getExtentTest().pass("Status is matched with response "+ expPetPojo.getStatus());
+    }
+
+    public void JsonSchemaValidation() {
+        String schemaFile=TestUtils.getProperty("PetResponseJSONSchema");
+        response.then().assertThat().body(matchesJsonSchema(new File(schemaFile)));
+        Log.info(response.body().asString());
+        ExtentManager.getExtentTest().pass(response.body().asString());
     }
 }
