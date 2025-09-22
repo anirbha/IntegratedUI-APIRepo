@@ -12,8 +12,11 @@ import ui.Utils.ExtentManager;
 import ui.Utils.Log;
 import ui.Utils.TestUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 public class StoreAction {
     private final String BASE_URL= TestUtils.getProperty("BASE_URL");
@@ -153,5 +156,12 @@ public class StoreAction {
         Log.info(response.body().asString());
         ExtentManager.getExtentTest().info(response.body().asString());
         return response;
+    }
+
+    public void validateJsonSchema() {
+        String schemaFile=TestUtils.getProperty("StoreOrderResponseJSONSchema");
+        response.then().assertThat().body(matchesJsonSchema(new File(schemaFile)));
+        Log.info("Schema is matching");
+        ExtentManager.getExtentTest().pass("Schema is matching");
     }
 }

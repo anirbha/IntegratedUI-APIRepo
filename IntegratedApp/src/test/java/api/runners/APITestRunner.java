@@ -7,7 +7,7 @@ import org.testng.annotations.Listeners;
 @CucumberOptions(
         features = {"src/test/java/resources/features/api"},
         glue = {"api/stepdefinitions","hooks"},
-        tags = "@api",
+        tags = "@JSONValidationStore",
         plugin = {"pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 

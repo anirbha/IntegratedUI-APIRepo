@@ -1,3 +1,4 @@
+@UserAPI
 Feature: Validate different operations using on users with User endpoint
 
   @CreateUserObject @api  @Regression
@@ -69,7 +70,7 @@ Feature: Validate different operations using on users with User endpoint
       |username|statusCode|
       | JAB    |404   |
 
-  @UpdateNotLoggedInUserDetails @api  @Regression
+  @UpdateNotLoggedInUserDetails @api  @Regression  @NegativeScenarios
   Scenario Outline: Trying to update a user details which are not logged in
     Given I update a user details with username "<username>""<password>" which are not logged in
     Then the status should be "<statusCode>"
@@ -77,3 +78,11 @@ Feature: Validate different operations using on users with User endpoint
     Examples:
       |username|password|statusCode|
       | cr7   | football|404       |
+  @UserDetailGet @api @Regression
+  Scenario Outline: Fetch the user details
+    Given I fetch a user details "<user>"
+    Then the status should be "<responsecode>"
+    Then I validate the JSON Schema of it
+    Examples:
+    |user|responsecode|
+    |user1|200|
